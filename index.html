@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumpleaños, Dra. Estefany 🦷💗</title>
+
+<!-- ==========================================================
+     GOOGLE FONTS — Fraunces (display, con cursiva) + Outfit (texto)
+     ========================================================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome (iconos) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* =============================================================================
+   TOKENS — Paleta, tipografía y variables de diseño
+   Puedes cambiar los colores editando estas variables.
+   ============================================================================= */
+:root{
+  /* Paleta */
+  --porcelain:   #FFFBF8;   /* fondo principal, blanco cálido */
+  --cream:       #FDF3ED;   /* fondo secundario */
+  --rose-soft:   #F4C9DA;   /* rosa pastel */
+  --rose:        #E497B8;   /* rosa medio */
+  --rose-deep:   #C15C86;   /* rosa intenso, acentos de texto */
+  --blue-dental: #A8D2DE;   /* celeste odontológico suave */
+  --blue-deep:   #4E93A3;   /* azul odontológico intenso */
+  --gold:        #C9A468;   /* dorado para detalles */
+  --plum:        #3B2A36;   /* texto principal, casi negro-ciruela */
+  --plum-soft:   #6E5A68;   /* texto secundario */
+  --white:       #FFFFFF;
+
+  /* Tipografía */
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Utilidades */
+  --shadow-soft: 0 20px 45px -20px rgba(193,92,134,0.35);
+  --shadow-card: 0 10px 30px -12px rgba(59,42,54,0.18);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 10px;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+
+*,*::before,*::after{ box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  background: var(--porcelain);
+  color: var(--plum);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  position: relative;
+}
+
+img{ max-width:100%; display:block; }
+button{ font-family: inherit; cursor:pointer; }
+:focus-visible{ outline: 3px solid var(--blue-deep); outline-offset: 3px; }
+
+.script{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--rose-deep);
+}
+
+.eyebrow{
+  display:inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.section-title{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+  line-height: 1.18;
+  margin: 0 0 1.2rem;
+  color: var(--plum);
+}
+
+/* =============================================================================
+   FONDO AMBIENTAL — pequeños dientes/corazones flotando (generados por JS)
+   ============================================================================= */
+.ambient-bg{
+  position: fixed; inset:0;
+  pointer-events:none;
+  z-index: 0;
+  overflow:hidden;
+}
+.ambient-item{
+  position:absolute;
+  color: var(--rose-soft);
+  opacity: 0.35;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp{
+  0%{ transform: translateY(10vh) translateX(0) rotate(0deg); opacity:0; }
+  10%{ opacity:0.35; }
+  90%{ opacity:0.35; }
+  100%{ transform: translateY(-110vh) translateX(20px) rotate(25deg); opacity:0; }
+}
+
+#confettiCanvas{
+  position: fixed; inset:0;
+  pointer-events:none;
+  z-index: 9999;
+}
+
+/* =============================================================================
+   BOTONES
+   ============================================================================= */
+.btn{
+  border:none;
+  border-radius: 100px;
+  padding: 0.95rem 2.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.btn-primary{
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
+  color:#fff;
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover{ transform: translateY(-3px) scale(1.02); box-shadow: 0 25px 50px -18px rgba(193,92,134,0.5); }
+.btn-primary:active{ transform: translateY(0) scale(0.98); }
+
+/* =============================================================================
+   0. GATE — Pantalla de entrada
+   ============================================================================= */
+.gate{
+  position: fixed; inset:0;
+  z-index: 100;
+  display:flex; align-items:center; justify-content:center;
+  padding: 1.5rem;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(244,201,218,0.55), transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(168,210,222,0.45), transparent 55%),
+    var(--porcelain);
+  transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
+}
+.gate.is-hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+
+.gate-card{
+  text-align:center;
+  max-width: 480px;
+  padding: 3rem 2.2rem;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.9);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(6px);
+  animation: gateIn 1s var(--ease) both;
+}
+@keyframes gateIn{ from{ opacity:0; transform: translateY(18px) scale(0.97);} to{opacity:1; transform:none;} }
+
+.gate-icon{ width:84px; margin: 0 auto 1.4rem; }
+.gate-tooth{ width:100%; height:auto; }
+.gate-tooth path:first-child{ fill: var(--porcelain); stroke: var(--rose-deep); stroke-width:3; }
+.gate-tooth .heart-spark{ fill: var(--rose-deep); animation: pulse 1.8s ease-in-out infinite; transform-origin: 60px 60px; }
+@keyframes pulse{ 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.18);} }
+
+.gate-eyebrow{
+  font-size: 0.75rem; letter-spacing:0.12em; text-transform:uppercase;
+  color: var(--plum-soft); margin: 0 0 0.9rem;
+}
+.gate-title{
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 5vw, 2.3rem);
+  line-height:1.3;
+  margin: 0 0 2rem;
+  color: var(--plum);
+}
+.gate-title em{ font-style:italic; color: var(--rose-deep); font-weight:600; }
+
+/* =============================================================================
+   MAIN CONTENT
+   ============================================================================= */
+.main-content{ position:relative; z-index:1; }
+
+section{
+  position:relative;
+  padding: 6.5rem 1.5rem;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align:center;
+}
+
+/* Reveal-on-scroll */
+.reveal{
+  opacity:0;
+  transform: translateY(26px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.reveal.is-visible{ opacity:1; transform:none; }
+
+/* =============================================================================
+   SCALLOP DIVIDER — motivo de "corona dental" entre secciones (elemento firma)
+   ============================================================================= */
+.scallop-divider{
+  height: 46px;
+  width:100%;
+  background-repeat: repeat-x;
+  background-size: 46px 46px;
+  background-position: center;
+  background-image: radial-gradient(circle at 50% 0%, transparent 22px, var(--cream) 23px);
+  background-color: var(--porcelain);
+}
+.scallop-divider.flip{
+  transform: scaleY(-1);
+}
+
+/* =============================================================================
+   1. HERO
+   ============================================================================= */
+.hero{
+  min-height: 92vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(244,201,218,0.5), transparent 50%),
+    radial-gradient(circle at 88% 75%, rgba(168,210,222,0.4), transparent 50%);
+}
+.floaters{ position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.floaters i{ position:absolute; opacity:0.3; animation: drift 9s ease-in-out infinite; }
+.floaters .f1{ top:15%; left:10%; color:var(--rose); font-size:1.6rem; animation-delay:0s; }
+.floaters .f2{ top:65%; left:8%; color:var(--rose-deep); font-size:1.2rem; animation-delay:1.4s; }
+.floaters .f3{ top:20%; right:12%; color:var(--blue-deep); font-size:1.8rem; animation-delay:0.7s; }
+.floaters .f4{ top:70%; right:10%; color:var(--rose-deep); font-size:1.1rem; animation-delay:2.1s; }
+.floaters .f5{ top:42%; left:50%; color:var(--gold); font-size:1.3rem; animation-delay:3s; }
+@keyframes drift{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-18px);} }
+
+.hero-title{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 7vw, 4.4rem);
+  line-height: 1.12;
+  margin: 0 0 1.1rem;
+}
+.hero-sub{
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: var(--plum-soft);
+  max-width: 480px;
+  margin: 0 auto 2.2rem;
+}
+.hero-emblem{ display:flex; gap:1.4rem; font-size:1.7rem; color: var(--rose-deep); margin-bottom: 2.5rem; }
+.hero-emblem i:nth-child(2){ color: var(--gold); }
+.hero-emblem i:nth-child(3){ color: var(--blue-deep); }
+
+.scroll-cue{ font-size:1.3rem; color: var(--rose-deep); animation: bounce 2s ease-in-out infinite; }
+@keyframes bounce{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(8px);} }
+
+/* =============================================================================
+   2. DENTAL SECTION
+   ============================================================================= */
+.dental{ background: var(--cream); max-width:100%; padding-left:1.5rem; padding-right:1.5rem; }
+.dental > *{ max-width: 780px; margin-left:auto; margin-right:auto; }
+.dental-text{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  color: var(--plum-soft);
+  max-width: 560px;
+  margin: 0 auto 3rem;
+  line-height:1.6;
+}
+
+.card-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  perspective: 800px;
+}
+.flip-card{
+  background: var(--white);
+  border: 1px solid rgba(193,92,134,0.15);
+  border-radius: var(--radius-md);
+  padding: 1.6rem 0.8rem;
+  box-shadow: var(--shadow-card);
+  font-weight:600;
+  font-family: var(--font-body);
+  color: var(--plum);
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease), background 0.45s var(--ease);
+  min-height: 116px;
+  display:flex; align-items:center; justify-content:center;
+}
+.flip-front{ display:flex; flex-direction:column; align-items:center; gap:0.6rem; font-size:0.95rem; }
+.flip-front i{ font-size:1.5rem; color: var(--rose-deep); }
+.flip-card:hover, .flip-card.is-flipped{
+  transform: translateY(-6px) rotateX(6deg);
+  box-shadow: 0 20px 40px -16px rgba(193,92,134,0.4);
+}
+.flip-card.is-flipped{ background: linear-gradient(135deg, var(--rose-soft), var(--white)); }
+.flip-card.is-flipped .flip-front{ display:none; }
+.flip-card.is-flipped::after{
+  content: attr(data-back);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--rose-deep);
+  line-height:1.4;
+  padding: 0 0.3rem;
+}
+
+.magic-tooth-wrap, .heart-wrap{ margin-bottom: 3rem; }
+.magic-hint{ color: var(--plum-soft); font-size:0.9rem; margin-bottom: 1rem; }
+.magic-tooth{
+  width: 110px; height:110px;
+  background: var(--white);
+  border: none;
+  border-radius: 50%;
+  box-shadow: var(--shadow-card);
+  display:flex; align-items:center; justify-content:center;
+  transition: transform 0.3s var(--ease);
+}
+.magic-tooth svg{ width:56px; }
+.magic-tooth path{ fill: var(--blue-dental); stroke: var(--blue-deep); stroke-width:2.5; transition: fill 0.3s; }
+.magic-tooth:hover{ transform: scale(1.08) rotate(-4deg); }
+.magic-tooth:active{ transform: scale(0.95); }
+.magic-phrase{
+  margin-top:1.1rem; min-height: 1.6em;
+  font-family: var(--font-display); font-style:italic;
+  color: var(--rose-deep); font-size:1.1rem;
+  opacity:0; transition: opacity 0.5s var(--ease);
+}
+.magic-phrase.is-visible{ opacity:1; }
+
+.heart-btn{
+  width: 90px; height:90px;
+  border-radius:50%;
+  border:none;
+  background: linear-gradient(135deg, var(--rose-soft), var(--rose));
+  color:#fff; font-size:2rem;
+  box-shadow: var(--shadow-card);
+  display:flex; align-items:center; justify-content:center;
+  transition: transform 0.3s var(--ease);
+  animation: heartbeat 2.4s ease-in-out infinite;
+}
+.heart-btn:hover{ transform: scale(1.1); }
+@keyframes heartbeat{ 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.06);} }
+.heart-phrase{
+  margin-top:1.1rem; min-height:1.6em;
+  font-family: var(--font-display); font-style:italic;
+  color: var(--rose-deep); font-size:1.1rem;
+  opacity:0; transition: opacity 0.5s var(--ease);
+  max-width: 420px; margin-left:auto; margin-right:auto;
+}
+.heart-phrase.is-visible{ opacity:1; }
+
+/* =============================================================================
+   3. LETTER
+   ============================================================================= */
+.letter-card{
+  text-align:left;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2.6rem 2.4rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(193,92,134,0.12);
+  position:relative;
+}
+.letter-card::before{
+  content:"";
+  position:absolute; top:0; left:2.4rem; right:2.4rem; height:4px;
+  background: linear-gradient(90deg, var(--rose-soft), var(--gold), var(--blue-dental));
+  border-radius: 0 0 6px 6px;
+}
+.letter-card p{
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--plum);
+  margin: 0 0 1.3rem;
+}
+.letter-signature{
+  font-style: italic;
+  color: var(--rose-deep);
+  font-weight: 600;
+  margin-bottom:0 !important;
+}
+
+/* =============================================================================
+   4. GIFT
+   ============================================================================= */
+.gift{ background: var(--cream); max-width:100%; }
+.gift-hint{ color: var(--plum-soft); margin-bottom: 2.2rem; }
+.gift-box{
+  position:relative;
+  width: 150px; height:120px;
+  margin: 0 auto;
+  border:none; background:none;
+}
+.gift-box-base{
+  position:absolute; bottom:0; left:0; right:0; height:80px;
+  background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+  border-radius: 10px;
+  box-shadow: var(--shadow-card);
+}
+.gift-box-lid{
+  position:absolute; top:14px; left:-6px; right:-6px; height:26px;
+  background: linear-gradient(135deg, var(--rose-deep), var(--rose));
+  border-radius: 8px;
+  transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
+  transform-origin: top left;
+  z-index:2;
+}
+.gift-ribbon-v{ position:absolute; top:14px; bottom:0; left:50%; width:14px; margin-left:-7px; background: var(--gold); z-index:1; }
+.gift-ribbon-h{ position:absolute; top:14px; left:0; right:0; height:14px; background: var(--gold); z-index:3; }
+.gift-bow{
+  position:absolute; top:-14px; left:50%; width:34px; height:22px; margin-left:-17px;
+  background: var(--gold);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  z-index:4;
+}
+.gift-box.is-open .gift-box-lid{ transform: translateY(-40px) rotate(-25deg); opacity:0; }
+.gift-box.is-open{ animation: giftShake 0.5s var(--ease); }
+@keyframes giftShake{ 0%,100%{ transform: rotate(0);} 25%{ transform: rotate(-3deg);} 75%{ transform: rotate(3deg);} }
+.gift-message{
+  margin-top: 1.6rem; min-height:1.6em;
+  font-family: var(--font-display); font-style:italic; font-size:1.3rem;
+  color: var(--rose-deep);
+  opacity:0; transition: opacity 0.6s var(--ease);
+}
+.gift-message.is-visible{ opacity:1; }
+
+/* =============================================================================
+   5. CAKE
+   ============================================================================= */
+.cake-section{ max-width:100%; }
+.cake-hint{ color: var(--plum-soft); margin-bottom: 2.4rem; }
+.cake{
+  position:relative;
+  width: 240px; height: 240px;
+  margin: 0 auto 1.6rem;
+}
+.candles{ position:absolute; top:-6px; left:50%; transform:translateX(-50%); display:flex; gap:26px; z-index:5; }
+.candle{
+  width:8px; height:44px;
+  background: repeating-linear-gradient(45deg, var(--blue-deep), var(--blue-deep) 4px, var(--white) 4px, var(--white) 8px);
+  border:none; border-radius:3px;
+  position:relative;
+  padding:0;
+}
+.flame{
+  position:absolute; top:-16px; left:50%; transform:translateX(-50%);
+  width:10px; height:16px;
+  background: radial-gradient(circle at 50% 70%, #FFE7A0, var(--gold) 70%);
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  animation: flicker 1.4s ease-in-out infinite;
+  transition: opacity 0.4s, transform 0.4s;
+}
+@keyframes flicker{ 0%,100%{ transform: translateX(-50%) scale(1);} 50%{ transform: translateX(-50%) scale(0.85) rotate(-4deg);} }
+.candle.is-out .flame{ opacity:0; transform: translateX(-50%) scale(0); }
+.candle.is-out::after{
+  content:"";
+  position:absolute; top:-20px; left:50%; transform:translateX(-50%);
+  width:3px; height:14px;
+  background: linear-gradient(to top, rgba(150,150,150,0.5), transparent);
+  animation: smoke 1.2s ease-out forwards;
+}
+@keyframes smoke{ 0%{ opacity:0.6; transform: translateX(-50%) translateY(0) scaleY(1);} 100%{ opacity:0; transform: translateX(-50%) translateY(-24px) scaleY(1.8);} }
+
+.cake-number{
+  position:absolute; top:38px; left:50%; transform:translateX(-50%);
+  font-family: var(--font-display); font-weight:700; font-style:italic;
+  font-size: 2.1rem; color: var(--rose-deep); z-index:4;
+}
+.cake-top{
+  position:absolute; top:64px; left:8px; right:8px; height:26px;
+  background: var(--white);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index:3;
+}
+.cake-drip{
+  position:absolute; top:80px; left:8px; right:8px; height:20px;
+  background: var(--rose-soft);
+  clip-path: polygon(0 0,100% 0,100% 40%,92% 100%,80% 45%,68% 100%,56% 45%,44% 100%,32% 45%,20% 100%,8% 45%,0 40%);
+  z-index:2;
+}
+.cake-layer{
+  position:absolute; left:0; right:0;
+  border-radius: 8px;
+}
+.cake-layer-2{ top:92px; height:60px; background: linear-gradient(180deg, var(--rose), var(--rose-deep)); }
+.cake-layer-1{ top:148px; left:14px; right:14px; height:66px; background: linear-gradient(180deg, var(--blue-dental), var(--blue-deep)); }
+.cake-plate{
+  position:absolute; bottom: 8px; left:-14px; right:-14px; height:14px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity:0.6;
+}
+.cake-message{
+  margin-top: 0.6rem; min-height:1.6em;
+  font-family: var(--font-display); font-style:italic; font-size:1.25rem;
+  color: var(--rose-deep);
+  opacity:0; transition: opacity 0.6s var(--ease);
+}
+.cake-message.is-visible{ opacity:1; }
+
+/* =============================================================================
+   6. GALLERY
+   ============================================================================= */
+.gallery{ background: var(--cream); max-width:100%; }
+.gallery-hint{ color: var(--plum-soft); margin-bottom: 2rem; font-size:0.95rem; }
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.gallery-item{
+  aspect-ratio: 1;
+  background: var(--white);
+  border: 2px dashed var(--rose-soft);
+  border-radius: var(--radius-md);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--rose);
+  font-size: 1.8rem;
+  overflow:hidden;
+}
+.gallery-item img{ width:100%; height:100%; object-fit:cover; }
+
+/* =============================================================================
+   7. FINAL
+   ============================================================================= */
+.final{ padding-bottom: 4rem; }
+.final-sub{ font-size:1.1rem; color: var(--plum-soft); margin-bottom: 2.2rem; }
+
+.footer{
+  text-align:center; padding: 2rem 1.5rem 3rem;
+  color: var(--plum-soft); font-size:0.85rem;
+}
+.footer i{ color: var(--rose-deep); margin: 0 2px; }
+
+/* =============================================================================
+   MUSIC FAB
+   ============================================================================= */
+.music-fab{
+  position: fixed; top: 1.2rem; right: 1.2rem; z-index: 60;
+  background: var(--white);
+  border: 1px solid rgba(193,92,134,0.2);
+  border-radius: 100px;
+  padding: 0.6rem 1.1rem 0.6rem 0.9rem;
+  display:flex; align-items:center; gap:0.55rem;
+  box-shadow: var(--shadow-card);
+  color: var(--rose-deep); font-weight:600; font-size:0.85rem;
+  transition: transform 0.3s var(--ease);
+}
+.music-fab:hover{ transform: translateY(-2px); }
+.music-fab i{ transition: transform 0.6s linear; }
+.music-fab.is-playing i{ animation: spin 3s linear infinite; }
+@keyframes spin{ from{ transform: rotate(0);} to{ transform: rotate(360deg);} }
+.music-fab-label{ display:none; }
+@media (min-width: 560px){ .music-fab-label{ display:inline; } }
+
+/* =============================================================================
+   FINAL OVERLAY
+   ============================================================================= */
+.final-overlay{
+  position: fixed; inset:0; z-index: 200;
+  background: rgba(59,42,54,0.94);
+  display:flex; align-items:center; justify-content:center;
+  padding: 2rem;
+  opacity:0; transition: opacity 0.8s var(--ease);
+}
+.final-overlay[hidden]{ display:none; }
+.final-overlay.is-visible{ opacity:1; }
+.overlay-close{
+  position:absolute; top:1.5rem; right:1.5rem;
+  background:none; border:none; color: rgba(255,255,255,0.7);
+  font-size:1.4rem; padding: 0.5rem;
+}
+.overlay-close:hover{ color:#fff; }
+.overlay-icon{ font-size:2.4rem; color: var(--rose-soft); margin-bottom:1.6rem; animation: pulse 2.4s ease-in-out infinite; }
+.overlay-content{ text-align:center; max-width: 620px; }
+.overlay-text{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 3.2vw, 1.65rem);
+  line-height: 1.65;
+  color: #fff;
+}
+
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================= */
+@media (max-width: 640px){
+  section{ padding: 4.5rem 1.2rem; }
+  .card-grid{ grid-template-columns: repeat(2, 1fr); }
+  .letter-card{ padding: 2rem 1.4rem; }
+  .gallery-grid{ grid-template-columns: repeat(2, 1fr); gap:0.7rem; }
+  .gate-card{ padding: 2.4rem 1.5rem; }
+  .music-fab{ padding: 0.55rem; }
+}
+
+@media (max-width: 400px){
+  .cake{ transform: scale(0.85); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- =========================================================================
+     FONDO AMBIENTAL — dientes y corazones flotando muy sutiles (decorativo)
+     ========================================================================= -->
+<div class="ambient-bg" id="ambientBg" aria-hidden="true"></div>
+
+<!-- Canvas para el confeti -->
+<canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+<!-- =========================================================================
+     0. PANTALLA DE ENTRADA (GATE)
+     ========================================================================= -->
+<section id="gate" class="gate">
+  <div class="gate-card">
+    <div class="gate-icon">
+      <svg viewBox="0 0 120 120" class="gate-tooth">
+        <path d="M60 14c-13 0-19 8-24 8-7 0-13-6-19-2-7 4-6 15-3 24 2 7-2 15-2 24 0 14 8 34 17 34 8 0 8-14 15-14s7 14 15 14c9 0 17-20 17-34 0-9-4-17-2-24 3-9 4-20-3-24-6-4-12 2-19 2-5 0-11-8-22-8" />
+        <path class="heart-spark" d="M60 52c-2-4-8-4-9 1-1 4 4 8 9 12 5-4 10-8 9-12-1-5-7-5-9-1z"/>
+      </svg>
+    </div>
+    <p class="gate-eyebrow">Para la Dra. Estefany Santamaria Mariano</p>
+    <h1 class="gate-title">Tengo una pequeña<br><em>sorpresa</em> para ti&hellip;</h1>
+    <button id="openGiftBtn" class="btn btn-primary">
+      <i class="fa-solid fa-gift"></i> Abrir sorpresa
+    </button>
+  </div>
+</section>
+
+<!-- =========================================================================
+     WRAPPER PRINCIPAL — oculto hasta que se abra la sorpresa
+     ========================================================================= -->
+<main id="mainContent" class="main-content" hidden>
+
+  <!-- Botón flotante de música -->
+  <button id="musicBtn" class="music-fab" aria-label="Reproducir música">
+    <i class="fa-solid fa-music"></i>
+    <span class="music-fab-label">Nuestra canción</span>
+  </button>
+  <!--
+    🎵 PARA CAMBIAR LA CANCIÓN:
+    Edita la constante `musica` dentro de script.js (búscala como AQUI_PONDRE_MI_CANCION)
+    y coloca ahí la ruta de tu archivo .mp3, por ejemplo: "assets/nuestra-cancion.mp3"
+  -->
+  <audio id="bgMusic" loop preload="none"></audio>
+
+  <!-- ===================================================================
+       1. HERO
+       =================================================================== -->
+  <section id="hero" class="hero">
+    <div class="floaters" aria-hidden="true">
+      <i class="fa-solid fa-tooth f1"></i>
+      <i class="fa-solid fa-heart f2"></i>
+      <i class="fa-solid fa-tooth f3"></i>
+      <i class="fa-solid fa-heart f4"></i>
+      <i class="fa-solid fa-star f5"></i>
+    </div>
+    <p class="eyebrow reveal">10 de agosto · su día</p>
+    <h1 class="hero-title reveal">
+      ¡Feliz cumpleaños,<br><span class="script">Dra. Estefany</span>!
+    </h1>
+    <p class="hero-sub reveal">Hoy celebramos tus <strong>26 años</strong> y a la maravillosa persona que eres.</p>
+    <div class="hero-emblem reveal" aria-hidden="true">
+      <i class="fa-solid fa-tooth"></i>
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-cake-candles"></i>
+    </div>
+    <div class="scroll-cue reveal"><i class="fa-solid fa-chevron-down"></i></div>
+  </section>
+
+  <div class="scallop-divider" aria-hidden="true"></div>
+
+  <!-- ===================================================================
+       2. SECCIÓN ODONTOLÓGICA + TARJETAS INTERACTIVAS
+       =================================================================== -->
+  <section id="dental" class="dental">
+    <p class="eyebrow reveal">Su vocación</p>
+    <h2 class="section-title reveal">La odontóloga que hace<br>sonreír al mundo 🦷✨</h2>
+    <p class="dental-text reveal">
+      Dicen que una sonrisa puede cambiarlo todo, pero tú no solo cuidas sonrisas&hellip;
+      también haces que la mía aparezca sin darme cuenta.
+    </p>
+
+    <div class="card-grid reveal">
+      <button class="flip-card" data-back="Las tuyas curan y también enamoran.">
+        <span class="flip-front"><i class="fa-solid fa-tooth"></i>Sonrisas</span>
+      </button>
+      <button class="flip-card" data-back="Lo que siento por ti, cada día un poco más.">
+        <span class="flip-front"><i class="fa-solid fa-heart"></i>Amor</span>
+      </button>
+      <button class="flip-card" data-back="Cada minuto contigo vale la pena recordar.">
+        <span class="flip-front"><i class="fa-solid fa-star"></i>Momentos</span>
+      </button>
+      <button class="flip-card" data-back="Mi orgullo, mi admiración, mi persona favorita.">
+        <span class="flip-front"><i class="fa-solid fa-user-graduate"></i>Dra. Estefany</span>
+      </button>
+    </div>
+
+    <!-- Diente mágico -->
+    <div class="magic-tooth-wrap reveal">
+      <p class="magic-hint">Toca el diente y descubre una frase&hellip;</p>
+      <button id="magicTooth" class="magic-tooth" aria-label="Diente mágico">
+        <svg viewBox="0 0 120 120">
+          <path d="M60 14c-13 0-19 8-24 8-7 0-13-6-19-2-7 4-6 15-3 24 2 7-2 15-2 24 0 14 8 34 17 34 8 0 8-14 15-14s7 14 15 14c9 0 17-20 17-34 0-9-4-17-2-24 3-9 4-20-3-24-6-4-12 2-19 2-5 0-11-8-22-8" />
+        </svg>
+      </button>
+      <p id="magicPhrase" class="magic-phrase" aria-live="polite">&nbsp;</p>
+    </div>
+
+    <!-- Corazón -->
+    <div class="heart-wrap reveal">
+      <button id="heartBtn" class="heart-btn" aria-label="Corazón sorpresa">
+        <i class="fa-solid fa-heart"></i>
+      </button>
+      <p id="heartPhrase" class="heart-phrase" aria-live="polite">&nbsp;</p>
+    </div>
+  </section>
+
+  <div class="scallop-divider flip" aria-hidden="true"></div>
+
+  <!-- ===================================================================
+       3. CARTA
+       =================================================================== -->
+  <section id="letter" class="letter">
+    <p class="eyebrow reveal">Unas palabras</p>
+    <h2 class="section-title reveal">Para ti, Estefany ❤️</h2>
+
+    <article class="letter-card reveal">
+      <!--
+        ✏️ EDITA AQUÍ EL TEXTO DE LA CARTA
+        (busca la variable de abajo si prefieres cambiarla desde script.js;
+        también puedes editarla directamente aquí en el HTML)
+      -->
+      <p>Hoy es un día para celebrarte, y no encuentro mejor forma de empezar que diciéndote lo orgulloso que estoy de ti. Verte crecer como odontóloga, verte estudiar hasta tarde y luego llegar cansada pero feliz porque ayudaste a alguien a sonreír de nuevo, es algo que admiro profundamente.</p>
+      <p>Cumples 26 años, y si algo tengo claro es que cada uno de ellos te trajo hasta aquí: a la mujer segura, dedicada y llena de luz que eres hoy. Gracias por dejarme ser parte de tus días, de tus metas y de tus pequeños grandes logros.</p>
+      <p>Ojalá este nuevo año te traiga todo lo que mereces: paz, salud, éxito en lo que amas hacer, y muchos motivos más para sonreír. Y ojalá, entre todo eso, sigamos escribiendo juntos muchos capítulos más.</p>
+      <p class="letter-signature">Con mucho amor, para la Dra. Estefany ❤️</p>
+    </article>
+  </section>
+
+  <div class="scallop-divider" aria-hidden="true"></div>
+
+  <!-- ===================================================================
+       4. REGALO INTERACTIVO
+       =================================================================== -->
+  <section id="gift" class="gift">
+    <p class="eyebrow reveal">Un detalle</p>
+    <h2 class="section-title reveal">Tu regalo</h2>
+    <p class="gift-hint reveal">Haz clic en la caja para abrirla</p>
+    <button id="giftBox" class="gift-box reveal" aria-label="Abrir regalo">
+      <span class="gift-box-lid"></span>
+      <span class="gift-box-base"></span>
+      <span class="gift-ribbon-v"></span>
+      <span class="gift-ribbon-h"></span>
+      <span class="gift-bow"></span>
+    </button>
+    <p id="giftMessage" class="gift-message" aria-live="polite">&nbsp;</p>
+  </section>
+
+  <div class="scallop-divider flip" aria-hidden="true"></div>
+
+  <!-- ===================================================================
+       5. TORTA DE CUMPLEAÑOS
+       =================================================================== -->
+  <section id="cake" class="cake-section">
+    <p class="eyebrow reveal">26 años</p>
+    <h2 class="section-title reveal">Pide un deseo 🎂</h2>
+    <p class="cake-hint reveal">Toca cada vela para apagarla</p>
+
+    <div class="cake reveal" id="cakeWrap">
+      <div class="candles" id="candles">
+        <button class="candle" data-candle="1" aria-label="Apagar vela 1"><span class="flame"></span></button>
+        <button class="candle" data-candle="2" aria-label="Apagar vela 2"><span class="flame"></span></button>
+        <button class="candle" data-candle="3" aria-label="Apagar vela 3"><span class="flame"></span></button>
+      </div>
+      <div class="cake-number">26</div>
+      <div class="cake-top"></div>
+      <div class="cake-drip"></div>
+      <div class="cake-layer cake-layer-2"></div>
+      <div class="cake-layer cake-layer-1"></div>
+      <div class="cake-plate"></div>
+    </div>
+    <p id="cakeMessage" class="cake-message" aria-live="polite">&nbsp;</p>
+  </section>
+
+  <div class="scallop-divider" aria-hidden="true"></div>
+
+  <!-- ===================================================================
+       6. GALERÍA DE FOTOS (placeholder para reemplazar)
+       =================================================================== -->
+  <section id="gallery" class="gallery">
+    <p class="eyebrow reveal">Nuestros momentos</p>
+    <h2 class="section-title reveal">Galería</h2>
+    <p class="gallery-hint reveal">
+      <!--
+        📸 GALERÍA DE FOTOS
+        Reemplaza cada bloque <div class="gallery-item"> con una etiqueta <img>.
+        Ejemplo:
+        <div class="gallery-item"><img src="fotos/foto1.jpg" alt="Estefany y yo"></div>
+        Puedes agregar o quitar tantos bloques como fotos tengas.
+      
+      Aquí irán nuestras fotos favoritas-->
+    </p>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item"><img src="archivos/foto_1.jpeg" alt="Estefany y yo"></div>
+      <div class="gallery-item"><img src="archivos/foto_2.jpeg" alt="Estefany"></div>
+      <div class="gallery-item"><img src="archivos/foto_3.jpeg" alt="Estefany y yo"></div>
+      <div class="gallery-item"><img src="archivos/foto_4.jpeg" alt="Estefany"></div>
+    </div>
+  </section>
+
+  <div class="scallop-divider flip" aria-hidden="true"></div>
+
+  <!-- ===================================================================
+       7. MENSAJE FINAL + ÚLTIMA SORPRESA
+       =================================================================== -->
+  <section id="final" class="final">
+    <p class="eyebrow reveal">Para cerrar con broche de oro</p>
+    <h2 class="section-title reveal">Que nunca te falten<br>motivos para sonreír</h2>
+    <p class="final-sub reveal">❤️ Feliz cumpleaños, Estefany. 🦷🎂</p>
+
+    <button id="finalBtn" class="btn btn-primary reveal">
+      Tengo algo más que decirte&hellip; ❤️
+    </button>
+  </section>
+
+  <footer class="footer">
+    <p>Hecho con <i class="fa-solid fa-heart"></i> y un poco de <i class="fa-solid fa-tooth"></i> para ti.</p>
+  </footer>
+</main>
+
+<!-- =========================================================================
+     OVERLAY DEL MENSAJE FINAL (pantalla oscurecida)
+     ========================================================================= -->
+<div id="finalOverlay" class="final-overlay" hidden>
+  <button id="closeOverlay" class="overlay-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+  <div class="overlay-content">
+    <i class="fa-solid fa-tooth overlay-icon"></i>
+    <p class="overlay-text">
+      Estefany, espero que estos 26 años sean solo el comienzo de todo lo bonito que está por venir.
+      Sigue sonriendo, sigue cumpliendo tus sueños y nunca olvides lo especial que eres.
+      <br><br>
+      Feliz cumpleaños, Dra. Estefany. ❤️🦷🎂
+    </p>
+  </div>
+</div>
+
+<script>
+/* =============================================================================
+   ⚙️  DATOS EDITABLES
+   Cambia estos valores para personalizar la página.
+   ============================================================================= */
+const nombre  = "Estefany Santamaria Mariano";
+const edad    = 26;
+const fecha   = "10 de agosto"; // fecha de cumpleaños que se muestra en el hero
+
+// 🎵 Canción — reemplaza esta ruta por tu archivo mp3 (local o URL pública)
+// Ejemplo local:  "assets/nuestra-cancion.mp3"
+// Ejemplo online: "https://tu-servidor.com/cancion.mp3"
+const musica = "archivos/Leo_Dan_Mary_Es_Mi_Amor.mp3";
+
+// 🦷 Frases del "diente mágico" — se muestran una por una en cada clic
+const frasesDiente = [
+  "Esta sonrisa es mi favorita.",
+  "Cada sonrisa tuya es mi lugar seguro.",
+  "Tu sonrisa es mi cura favorita.",
+  "Podría verte sonreír toda la vida.",
+  "Hasta tus dientes son perfectos, doctora."
+];
+
+// ❤️ Frases del corazón
+const frasesCorazon = [
+  "Si tuviera que elegir una sonrisa para ver todos los días, elegiría la tuya.",
+  "Contigo hasta los días comunes se sienten especiales.",
+  "Eres mi persona favorita, sin importar el día.",
+  "Cada año a tu lado es mi mejor regalo."
+];
+
+/* =============================================================================
+   FONDO AMBIENTAL — genera dientes y corazones flotando
+   ============================================================================= */
+(function initAmbientBg(){
+  const bg = document.getElementById('ambientBg');
+  if(!bg) return;
+  const icons = ['fa-tooth','fa-heart'];
+  const total = window.innerWidth < 640 ? 10 : 18;
+  for(let i=0;i<total;i++){
+    const el = document.createElement('i');
+    el.className = 'fa-solid ' + icons[i % icons.length] + ' ambient-item';
+    el.style.left = Math.random()*100 + 'vw';
+    el.style.fontSize = (0.8 + Math.random()*1.2) + 'rem';
+    el.style.animationDuration = (14 + Math.random()*12) + 's';
+    el.style.animationDelay = (Math.random()*14) + 's';
+    bg.appendChild(el);
+  }
+})();
+
+/* =============================================================================
+   CONFETI — implementación ligera en canvas, sin dependencias externas
+   ============================================================================= */
+const confettiCanvas = document.getElementById('confettiCanvas');
+const ctx = confettiCanvas.getContext('2d');
+let confettiParticles = [];
+let confettiRunning = false;
+
+function resizeCanvas(){
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+const confettiColors = ['#E497B8','#C15C86','#A8D2DE','#4E93A3','#C9A468','#F4C9DA'];
+
+function launchConfetti(amount = 90){
+  const originX = confettiCanvas.width / 2;
+  for(let i=0;i<amount;i++){
+    confettiParticles.push({
+      x: originX + (Math.random()-0.5)*200,
+      y: confettiCanvas.height * 0.25,
+      vx: (Math.random()-0.5)*8,
+      vy: -(Math.random()*10 + 4),
+      size: Math.random()*7 + 4,
+      color: confettiColors[Math.floor(Math.random()*confettiColors.length)],
+      rotation: Math.random()*360,
+      rotSpeed: (Math.random()-0.5)*10,
+      shape: Math.random() > 0.5 ? 'circle' : 'rect',
+      gravity: 0.28 + Math.random()*0.1,
+      life: 0
+    });
+  }
+  if(!confettiRunning){
+    confettiRunning = true;
+    requestAnimationFrame(animateConfetti);
+  }
+}
+
+function animateConfetti(){
+  ctx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+  confettiParticles.forEach(p=>{
+    p.vy += p.gravity;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.rotation += p.rotSpeed;
+    p.life++;
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rotation * Math.PI/180);
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = Math.max(0, 1 - p.life/160);
+    if(p.shape === 'circle'){
+      ctx.beginPath();
+      ctx.arc(0,0,p.size/2,0,Math.PI*2);
+      ctx.fill();
+    } else {
+      ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+    }
+    ctx.restore();
+  });
+  confettiParticles = confettiParticles.filter(p => p.life < 160 && p.y < confettiCanvas.height + 40);
+  if(confettiParticles.length > 0){
+    requestAnimationFrame(animateConfetti);
+  } else {
+    confettiRunning = false;
+    ctx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+  }
+}
+
+/* =============================================================================
+   0. GATE — abrir sorpresa
+   ============================================================================= */
+const gate = document.getElementById('gate');
+const openGiftBtn = document.getElementById('openGiftBtn');
+const mainContent = document.getElementById('mainContent');
+
+openGiftBtn.addEventListener('click', () => {
+  launchConfetti(70);
+  gate.classList.add('is-hidden');
+  mainContent.hidden = false;
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    gate.style.display = 'none';
+    initRevealObserver(); // activar animaciones de aparición ya con el contenido visible
+  }, 800);
+});
+
+// Bloquea el scroll mientras se muestra la pantalla de entrada
+document.body.style.overflow = 'hidden';
+
+/* =============================================================================
+   REVEAL ON SCROLL
+   ============================================================================= */
+function initRevealObserver(){
+  const items = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(item => observer.observe(item));
+}
+
+/* =============================================================================
+   2. TARJETAS INTERACTIVAS (flip)
+   ============================================================================= */
+document.querySelectorAll('.flip-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('is-flipped');
+  });
+});
+
+/* =============================================================================
+   DIENTE MÁGICO
+   ============================================================================= */
+const magicTooth = document.getElementById('magicTooth');
+const magicPhrase = document.getElementById('magicPhrase');
+let dienteIndex = 0;
+magicTooth.addEventListener('click', () => {
+  magicPhrase.classList.remove('is-visible');
+  setTimeout(() => {
+    magicPhrase.textContent = frasesDiente[dienteIndex % frasesDiente.length];
+    magicPhrase.classList.add('is-visible');
+    dienteIndex++;
+  }, 200);
+});
+
+/* =============================================================================
+   CORAZÓN
+   ============================================================================= */
+const heartBtn = document.getElementById('heartBtn');
+const heartPhrase = document.getElementById('heartPhrase');
+let corazonIndex = 0;
+heartBtn.addEventListener('click', () => {
+  heartPhrase.classList.remove('is-visible');
+  setTimeout(() => {
+    heartPhrase.textContent = frasesCorazon[corazonIndex % frasesCorazon.length];
+    heartPhrase.classList.add('is-visible');
+    corazonIndex++;
+  }, 200);
+});
+
+/* =============================================================================
+   4. REGALO
+   ============================================================================= */
+const giftBox = document.getElementById('giftBox');
+const giftMessage = document.getElementById('giftMessage');
+let giftOpened = false;
+giftBox.addEventListener('click', () => {
+  if(giftOpened) return;
+  giftOpened = true;
+  giftBox.classList.add('is-open');
+  launchConfetti(60);
+  setTimeout(() => {
+    giftMessage.textContent = '¡Sorpresa! 💕';
+    giftMessage.classList.add('is-visible');
+  }, 350);
+});
+
+/* =============================================================================
+   5. TORTA — velas y deseo
+   ============================================================================= */
+const candles = document.querySelectorAll('.candle');
+const cakeMessage = document.getElementById('cakeMessage');
+let candlesOut = 0;
+candles.forEach(candle => {
+  candle.addEventListener('click', () => {
+    if(candle.classList.contains('is-out')) return;
+    candle.classList.add('is-out');
+    candlesOut++;
+    if(candlesOut === candles.length){
+      launchConfetti(110);
+      setTimeout(() => {
+        cakeMessage.textContent = '¡Deseo concedido! ✨';
+        cakeMessage.classList.add('is-visible');
+      }, 300);
+    }
+  });
+});
+
+/* =============================================================================
+   MÚSICA
+   ============================================================================= */
+const musicBtn = document.getElementById('musicBtn');
+const bgMusic = document.getElementById('bgMusic');
+bgMusic.src = musica;
+let musicPlaying = false;
+
+musicBtn.addEventListener('click', () => {
+  if(!musicPlaying){
+    bgMusic.play().then(() => {
+      musicPlaying = true;
+      musicBtn.classList.add('is-playing');
+      musicBtn.querySelector('.music-fab-label').textContent = 'Pausar';
+    }).catch(() => {
+      // Si el navegador bloquea la reproducción o el archivo aún no existe
+      alert('Coloca el archivo de tu canción en la constante "musica" dentro de script.js para poder reproducirla 🎵');
+    });
+  } else {
+    bgMusic.pause();
+    musicPlaying = false;
+    musicBtn.classList.remove('is-playing');
+    musicBtn.querySelector('.music-fab-label').textContent = 'Nuestra canción';
+  }
+});
+
+/* =============================================================================
+   7. MENSAJE FINAL
+   ============================================================================= */
+const finalBtn = document.getElementById('finalBtn');
+const finalOverlay = document.getElementById('finalOverlay');
+const closeOverlay = document.getElementById('closeOverlay');
+
+finalBtn.addEventListener('click', () => {
+  finalOverlay.hidden = false;
+  requestAnimationFrame(() => finalOverlay.classList.add('is-visible'));
+  launchConfetti(80);
+});
+
+closeOverlay.addEventListener('click', () => {
+  finalOverlay.classList.remove('is-visible');
+  setTimeout(() => { finalOverlay.hidden = true; }, 700);
+});
+
+</script>
+</body>
+</html>
